@@ -1,0 +1,38 @@
+.aero-shards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.aero-shards__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.aero-shards[data-ready='true'] .aero-shards__canvas {
+  opacity: 1;
+}
+
+/* 叠加层：铺在现有背景之上、内容之下，用滤色混合让深色底透出、粒子发光叠加 */
+.aero-shards.aero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aero-shards__canvas {
+    transition: none;
+  }
+}

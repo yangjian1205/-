@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // 这两件事必须在最前面同步执行 —— 浏览器的滚动恢复/锚点定位都发生在
+      // React 挂载之前，写在 React 里已经晚了（表现就是「一打开就停在最后一页」）。
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+      // URL 里残留的 #contact / #strengths 会让每次打开都直接落到末屏，进站先清掉
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search)
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="杨健 — AI Agent / LLM 应用开发工程师个人作品集" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#171a2e" />
+    <!-- 内联 SVG 图标：不用额外文件，也消掉浏览器默认请求 /favicon.ico 的 404 -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e01616'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='19' font-weight='bold' fill='%23fff' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E" />
+    <!-- 首屏视频的解码前占位图，提前拉能缩短首屏最大元素的绘制时间 -->
+    <link rel="preload" as="image" href="poster-hero.webp" fetchpriority="high" />
+    <title>杨健 · AI Agent / LLM 应用开发工程师</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
