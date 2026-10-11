@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist_stale_9sept/
+.vite/
+
+.env
+.env.*
+*.local
+
+*.log
+npm-debug.log*
+
+bg-4k-backup.mp4
